@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://ccypsyrhh4fw0"]
+
+[ext_resource type="Script" uid="uid://bxetssb5koqlf" path="res://scripts/visitor_card.gd" id="1_dcydb"]
+
+[node name="VisitorCard" type="PanelContainer" unique_id=425939100 node_paths=PackedStringArray("portrait_rect", "birth_date_label", "statement_label")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dcydb")
+portrait_rect = NodePath("VBoxContainer/TextureRect")
+birth_date_label = NodePath("VBoxContainer/BirthDateLabel")
+statement_label = NodePath("VBoxContainer/StatementLabel")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1202218519]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=1423319351]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BirthDateLabel" type="Label" parent="VBoxContainer" unique_id=350875450]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="StatementLabel" type="Label" parent="VBoxContainer" unique_id=1578045763]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_alignment = 1
+vertical_alignment = 1

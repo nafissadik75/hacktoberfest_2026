@@ -1,0 +1,141 @@
+[gd_scene format=3 uid="uid://cbqyge1g16n4e"]
+
+[ext_resource type="Script" uid="uid://bdjpnuu3w8umc" path="res://scripts/game.gd" id="1_uwrxv"]
+[ext_resource type="Texture2D" uid="uid://dh51gqnkouhoj" path="res://assets/in_person/01_in_person.png" id="2_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://ccypsyrhh4fw0" path="res://scenes/visitor_card.tscn" id="2_yqjtg"]
+
+[node name="Game" type="Control" unique_id=1585691123 node_paths=PackedStringArray("visitor_card", "accept_button", "reject_button", "score_label", "round_label", "time_label", "feedback_label", "results_panel", "final_score_label", "restart_button", "loading_panel", "loading_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_uwrxv")
+visitor_card = NodePath("VisitorCard")
+accept_button = NodePath("Layout/DecisionButtons/AcceptButton")
+reject_button = NodePath("Layout/DecisionButtons/RejectButton")
+score_label = NodePath("Layout/HUD/ScoreLabel")
+round_label = NodePath("Layout/HUD/RoundLabel")
+time_label = NodePath("Layout/HUD/TimeLabel")
+feedback_label = NodePath("Layout/FeedbackLabel")
+results_panel = NodePath("ResultsPanel")
+final_score_label = NodePath("ResultsPanel/ResultsLayout/FinalScoreLabel")
+restart_button = NodePath("ResultsPanel/ResultsLayout/RestartButton")
+loading_panel = NodePath("LoadingPanel")
+loading_label = NodePath("LoadingPanel/LoadingLabel")
+use_ai = true
+ai_model = "gemma-4-26b-a4b-it"
+ai_timeout = 30.0
+
+[node name="BG" type="TextureRect" parent="." unique_id=962684885]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=879437936]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_lnu2h")
+
+[node name="Layout" type="VBoxContainer" parent="." unique_id=1597608054]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HUD" type="HBoxContainer" parent="Layout" unique_id=1617049460]
+layout_mode = 2
+
+[node name="ScoreLabel" type="Label" parent="Layout/HUD" unique_id=97272985]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="RoundLabel" type="Label" parent="Layout/HUD" unique_id=1936369279]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="TimeLabel" type="Label" parent="Layout/HUD" unique_id=1219628761]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="DecisionButtons" type="HBoxContainer" parent="Layout" unique_id=22029528]
+layout_mode = 2
+alignment = 2
+
+[node name="AcceptButton" type="Button" parent="Layout/DecisionButtons" unique_id=1315464568]
+layout_mode = 2
+text = "Accept"
+
+[node name="RejectButton" type="Button" parent="Layout/DecisionButtons" unique_id=1446689278]
+layout_mode = 2
+text = "Reject"
+
+[node name="FeedbackLabel" type="Label" parent="Layout" unique_id=10794220]
+layout_mode = 2
+
+[node name="VisitorCard" parent="." unique_id=425939100 instance=ExtResource("2_yqjtg")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+offset_left = -0.5
+offset_top = -54.0
+offset_right = 0.5
+grow_vertical = 0
+size_flags_vertical = 3
+
+[node name="LoadingPanel" type="PanelContainer" parent="." unique_id=462159560]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LoadingLabel" type="Label" parent="LoadingPanel" unique_id=764909183]
+layout_mode = 2
+text = "Preparing Visitors"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResultsPanel" type="PanelContainer" parent="." unique_id=1537748117]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResultsLayout" type="VBoxContainer" parent="ResultsPanel" unique_id=1864581575]
+layout_mode = 2
+
+[node name="FinalScoreLabel" type="Label" parent="ResultsPanel/ResultsLayout" unique_id=1038972491]
+layout_mode = 2
+
+[node name="RestartButton" type="Button" parent="ResultsPanel/ResultsLayout" unique_id=108852188]
+layout_mode = 2
+text = "Restart"
+
+[node name="DecisionTimer" type="Timer" parent="." unique_id=277531643]
+wait_time = 15.0
+one_shot = true
+
+[node name="FeedbackTimer" type="Timer" parent="." unique_id=680783794]
+one_shot = true
